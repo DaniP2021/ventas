@@ -1,8 +1,11 @@
 package Modelo;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ClienteDAO {
@@ -10,13 +13,14 @@ public class ClienteDAO {
     Conexion cn = new Conexion();
     Connection con;
     PreparedStatement ps;
+    ResultSet rs;
 
     public boolean RegistrarCliente(Cliente cl) {
-        String sql = "INSERT INTO clientes (DNI, nombre, telefono, direccion, razon VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO clientes (dni, nombre, telefono, direccion, razonsocial VALUES (?,?,?,?,?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, cl.getDNI());
+            ps.setInt(1, cl.getDni());
             ps.setString(2, cl.getNombre());
             ps.setInt(3, cl.getTelefono());
             ps.setString(4, cl.getDireccion());
@@ -36,6 +40,34 @@ public class ClienteDAO {
             }
         }
     }
+
+    public List ListarCliente() {
+        List<Cliente> ListaCl = new ArrayList();
+        String sql = "SELECT * FROM clientes";
+        try {
+            con = cn.getConnection();
+            ps con.prepareStatement(sql);
+           rs = ps.executeQuery();
+            while (rs.next()) {                
+                Cliente cl = new Cliente();
+                cl.setId(rs.getString("id"));
+                cl.setDni(rs.getInt("dni"));
+                cl.setNombre(rs.getString("nombre"));
+                cl.setTelefono(rs.getInt("telefono"));
+                cl.setDireccion(rs.getString("direccion"));
+                cl.setRazon(rs.getString("razon"));
+                ListaCl.add(cl);
+                
+            }
+            
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+        
+        return  ListaCl;
+    } 
 }
        
         

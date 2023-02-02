@@ -10,22 +10,22 @@ package Modelo;
  */
 public class Cliente {
     private int id;
-    private int DNI;
+    private int dni;
     private String nombre;
     private int telefono;
     private String direccion;
-    private String razon;
+    private String razonsocial;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int DNI, String nombre, int telefono, String direccion, String razon) {
+    public Cliente(int id, int dni, String nombre, int telefono, String direccion, String razonsocial) {
         this.id = id;
-        this.DNI = DNI;
+        this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.razon = razon;
+        this.razonsocial = razonsocial;
     }
 
     public int getId() {
@@ -36,12 +36,12 @@ public class Cliente {
         this.id = id;
     }
 
-    public int getDNI() {
-        return DNI;
+    public int getDni() {
+        return dni;
     }
 
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -69,11 +69,11 @@ public class Cliente {
     }
 
     public String getRazon() {
-        return razon;
+        return razonsocial;
     }
 
     public void setRazon(String razon) {
-        this.razon = razon;
+        this.razonsocial = razonsocial;
     }
     
     

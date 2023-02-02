@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class LoginDAO {
+public class LoginDAO { 
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
@@ -15,7 +15,7 @@ public class LoginDAO {
     
     public login log(String correo, String pass){
         login l = new login();
-        String sql = "SELECT + FROM usuarios WHRE correo = ? AND pass = ?";
+        String sql = "SELECT * FROM usuarios WHERE correo = ? AND pass = ?";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
@@ -27,8 +27,7 @@ public class LoginDAO {
                 l.setNombre(rs.getString("nombre"));
                 l.setCorreo(rs.getString("correo"));
                 l.setPass(rs.getString("pass"));                
-                
-                
+      
             }
             
 
