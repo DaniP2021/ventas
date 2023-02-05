@@ -1,8 +1,8 @@
 package Modelo;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +50,7 @@ public class ClienteDAO {
            rs = ps.executeQuery();
             while (rs.next()) {                
                 Cliente cl = new Cliente();
-                cl.setId(rs.getString("id"));
+                cl.setId(rs.getInt("id"));
                 cl.setDni(rs.getInt("dni"));
                 cl.setNombre(rs.getString("nombre"));
                 cl.setTelefono(rs.getInt("telefono"));
